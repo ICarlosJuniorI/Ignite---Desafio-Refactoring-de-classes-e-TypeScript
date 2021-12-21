@@ -14,6 +14,7 @@ interface FoodProps {
   description: string;
   price: string;
   available: boolean;
+  image: string;
 }
 
 export default function Dashboard() {
@@ -73,7 +74,7 @@ export default function Dashboard() {
     }
   }
 
-  async function handleDeleteFood({id}: FoodProps) {
+  async function handleDeleteFood(id: number) {
     // const { foods } = useState();
 
     await api.delete(`/foods/${id}`);
@@ -129,59 +130,3 @@ export default function Dashboard() {
     </>
   );
 }
-
-//   async componentDidMount() {
-//   const response = await api.get('/foods');
-
-//   this.setState({ foods: response.data });
-// }
-
-// handleAddFood = async food => {
-//   const { foods } = this.state;
-
-//   try {
-//     const response = await api.post('/foods', {
-//       ...food,
-//       available: true,
-//     });
-
-//     this.setState({ foods: [...foods, response.data] });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
-
-
-
-// render() {
-//   const { modalOpen, editModalOpen, editingFood, foods } = this.state;
-
-//   return (
-//     <>
-//       <Header openModal={this.toggleModal} />
-//       <ModalAddFood
-//         isOpen={modalOpen}
-//         setIsOpen={this.toggleModal}
-//         handleAddFood={this.handleAddFood}
-//       />
-//       <ModalEditFood
-//         isOpen={editModalOpen}
-//         setIsOpen={this.toggleEditModal}
-//         editingFood={editingFood}
-//         handleUpdateFood={this.handleUpdateFood}
-//       />
-
-//       <FoodsContainer data-testid="foods-list">
-//         {foods &&
-//           foods.map(food => (
-//             <Food
-//               key={food.id}
-//               food={food}
-//               handleDelete={this.handleDeleteFood}
-//               handleEditFood={this.handleEditFood}
-//             />
-//           ))}
-//       </FoodsContainer>
-//     </>
-//   );
-// }
